@@ -70,14 +70,18 @@ const handleVerifyOTP = async (otp) => {
     //     setRoleHint(json.role_hint);
     //     setStep("register");
     // }
-    if(mockUsers[email] || email == "a@gmail.com"){
+    if(mockUsers[email] || email == "a@gmail.com" || email == "f@gmail.com" || email=="k@gmail.com"){
         //setUser()
         if(email == "a@gmail.com") {
             redirectToDashboard("student")
         }
-        else {
+        else if(email == "f@gmail.com"){
+            redirectToDashboard("faculty_advisor")
+        }
+        else if (email=="k@gmail.com"){
         redirectToDashboard("instructor")
     }
+
     }
     else{
         setStep("not-found")
@@ -102,7 +106,7 @@ const handleVerifyOTP = async (otp) => {
         navigate(ROUTES.INSTRUCTOR_DASHBOARD);
         break;
       case USER_ROLES.FACULTY_ADVISOR:
-        navigate(ROUTES.FACULTY_DASHBOARD);
+        navigate(ROUTES.ADVISOR_DASHBOARD);
         break;
       default:
         navigate(ROUTES.HOME);

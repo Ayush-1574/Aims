@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 export default function AdvisorCourseApprovals() {
   const { courses, setCourses } = useOutletContext();
 
-  const pending = courses.filter(c => c.status === "PENDING_APPROVAL");
+  const pending = courses.filter(c => c.status === "PENDING_ADVISOR");
 
   const approve = (id) => {
     setCourses(prev =>
@@ -15,18 +15,22 @@ export default function AdvisorCourseApprovals() {
   };
 
   const reject = (id) => {
-    setCourses(prev => prev.filter(c => c.id !== id));
+    setCourses(prev =>
+      prev.map(c =>
+        c.id === id ? { ...c, status: "REJECTED" } : c
+      )
+    );
   };
 
   if (pending.length === 0)
-    return <div>No courses pending approval.</div>;
+    return <div>No courses pending advisor approval.</div>;
 
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-semibold">Pending Course Approvals</h2>
+      <h2 className="text-xl font-semibold">Course Approvals</h2>
 
       {pending.map(c => (
-        <div key={c.id} className="p-3 border rounded bg-white flex justify-between items-center">
+        <div key={c.id} className="p-3 border rounded bg-white flex justify-between">
           <div>
             <p className="font-semibold">{c.code} — {c.title}</p>
             <p className="text-gray-600">Session: {c.session}</p>

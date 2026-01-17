@@ -19,6 +19,6 @@ export const ROUTES = {
   HOME: '/',
   STUDENT_DASHBOARD: '/student/dashboard',
   INSTRUCTOR_DASHBOARD: '/instructor/dashboard',
-  FACULTY_DASHBOARD: '/faculty/dashboard',
+  ADVISOR_DASHBOARD: '/advisor/dashboard',
   LOGOUT: '/logout'
 };

@@ -105,7 +105,7 @@ export default function CoursesPage() {
           Search
         </Button>
 
-        <Button onClick={handleReset} variant="outline">
+        <Button onClick={handleReset} className="bg-gray-600 hover:bg-gray-700 text-white">
           Reset
         </Button>
       </div>
